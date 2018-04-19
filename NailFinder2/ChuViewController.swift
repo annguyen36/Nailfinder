@@ -27,6 +27,11 @@ class ChuViewController: UIViewController, CLLocationManagerDelegate {
             let center = CLLocationCoordinate2D(latitude: coord.latitude, longitude: coord.longitude)
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             map.setRegion(region, animated: true)
+            map.removeAnnotations(map.annotations)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = center
+            annotation.title = "Your location"
+            map.addAnnotation(annotation)
         }
     }
 
