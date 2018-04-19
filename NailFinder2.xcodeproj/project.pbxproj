@@ -17,6 +17,7 @@
 		8E94676720891332002A4EF1 /* NailFinder2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94676620891332002A4EF1 /* NailFinder2Tests.swift */; };
 		8E94677220891332002A4EF1 /* NailFinder2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94677120891332002A4EF1 /* NailFinder2UITests.swift */; };
 		8E946780208913A7002A4EF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E94677F208913A6002A4EF1 /* GoogleService-Info.plist */; };
+		8E94678220892A28002A4EF1 /* ChuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94678120892A28002A4EF1 /* ChuViewController.swift */; };
 		E443951715560830F69B57DF /* Pods_NailFinder2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD2C68C93F3F474927D0FEF /* Pods_NailFinder2.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		8E94677120891332002A4EF1 /* NailFinder2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NailFinder2UITests.swift; sourceTree = "<group>"; };
 		8E94677320891332002A4EF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E94677F208913A6002A4EF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8E94678120892A28002A4EF1 /* ChuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuViewController.swift; sourceTree = "<group>"; };
 		91A555DAB73A5292F7F71625 /* Pods_NailFinder2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NailFinder2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C97AA6369CD00D919C3D95C6 /* Pods_NailFinder2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NailFinder2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6134298E02D12CC2C5AE50 /* Pods-NailFinder2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NailFinder2.release.xcconfig"; path = "Pods/Target Support Files/Pods-NailFinder2/Pods-NailFinder2.release.xcconfig"; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				8E94675120891332002A4EF1 /* AppDelegate.swift */,
 				8E94675320891332002A4EF1 /* ViewController.swift */,
+				8E94678120892A28002A4EF1 /* ChuViewController.swift */,
 				8E94675520891332002A4EF1 /* Main.storyboard */,
 				8E94675820891332002A4EF1 /* Assets.xcassets */,
 				8E94675A20891332002A4EF1 /* LaunchScreen.storyboard */,
@@ -468,6 +471,7 @@
 			files = (
 				8E94675420891332002A4EF1 /* ViewController.swift in Sources */,
 				8E94675220891332002A4EF1 /* AppDelegate.swift in Sources */,
+				8E94678220892A28002A4EF1 /* ChuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
