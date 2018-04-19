@@ -8,12 +8,15 @@
 
 import UIKit
 import MapKit
+import FirebaseDatabase
+import FirebaseAuth
 
 class ChuViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var callThoBtn: UIButton!
     var locationManager = CLLocationManager()
+    var userLocation = CLLocationCoordinate2D()
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
@@ -25,6 +28,7 @@ class ChuViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let coord = manager.location?.coordinate {
             let center = CLLocationCoordinate2D(latitude: coord.latitude, longitude: coord.longitude)
+            userLocation = center
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             map.setRegion(region, animated: true)
             map.removeAnnotations(map.annotations)
@@ -39,5 +43,9 @@ class ChuViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func callThoTapped(_ sender: Any) {
+        if let email = Auth.auth().currentUser?.email{
+            let rideRequestDictionary : [String:Any] = ["email": email, "lat":userLocation.latitude, "lon":userLocation.longitude]
+            Database.database().reference().child("NailRequest").childByAutoId().setValue(rideRequestDictionary)
+        }
     }
 }
