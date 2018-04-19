@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		237B96C1F3E981B56AFDDCF4 /* Pods_NailFinder2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A555DAB73A5292F7F71625 /* Pods_NailFinder2UITests.framework */; };
+		3E550F39B2604E24EF7D1675 /* Pods_NailFinder2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97AA6369CD00D919C3D95C6 /* Pods_NailFinder2Tests.framework */; };
 		8E94675220891332002A4EF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94675120891332002A4EF1 /* AppDelegate.swift */; };
 		8E94675420891332002A4EF1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94675320891332002A4EF1 /* ViewController.swift */; };
 		8E94675720891332002A4EF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E94675520891332002A4EF1 /* Main.storyboard */; };
@@ -14,6 +16,8 @@
 		8E94675C20891332002A4EF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E94675A20891332002A4EF1 /* LaunchScreen.storyboard */; };
 		8E94676720891332002A4EF1 /* NailFinder2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94676620891332002A4EF1 /* NailFinder2Tests.swift */; };
 		8E94677220891332002A4EF1 /* NailFinder2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94677120891332002A4EF1 /* NailFinder2UITests.swift */; };
+		8E946780208913A7002A4EF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E94677F208913A6002A4EF1 /* GoogleService-Info.plist */; };
+		E443951715560830F69B57DF /* Pods_NailFinder2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD2C68C93F3F474927D0FEF /* Pods_NailFinder2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +38,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1989088403213A850872245B /* Pods-NailFinder2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NailFinder2UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NailFinder2UITests/Pods-NailFinder2UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		52328DBED372930A3C0F7DB0 /* Pods-NailFinder2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NailFinder2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NailFinder2Tests/Pods-NailFinder2Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		5AD2C68C93F3F474927D0FEF /* Pods_NailFinder2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NailFinder2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7041835F10A721FDB244EE07 /* Pods-NailFinder2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NailFinder2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NailFinder2Tests/Pods-NailFinder2Tests.release.xcconfig"; sourceTree = "<group>"; };
+		7FE00DBA4A40C041E79FB0CC /* Pods-NailFinder2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NailFinder2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NailFinder2/Pods-NailFinder2.debug.xcconfig"; sourceTree = "<group>"; };
+		87663C1112236F06A3817261 /* Pods-NailFinder2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NailFinder2UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NailFinder2UITests/Pods-NailFinder2UITests.release.xcconfig"; sourceTree = "<group>"; };
 		8E94674E20891332002A4EF1 /* NailFinder2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NailFinder2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E94675120891332002A4EF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E94675320891332002A4EF1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +57,10 @@
 		8E94676D20891332002A4EF1 /* NailFinder2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NailFinder2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E94677120891332002A4EF1 /* NailFinder2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NailFinder2UITests.swift; sourceTree = "<group>"; };
 		8E94677320891332002A4EF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E94677F208913A6002A4EF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		91A555DAB73A5292F7F71625 /* Pods_NailFinder2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NailFinder2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C97AA6369CD00D919C3D95C6 /* Pods_NailFinder2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NailFinder2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB6134298E02D12CC2C5AE50 /* Pods-NailFinder2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NailFinder2.release.xcconfig"; path = "Pods/Target Support Files/Pods-NailFinder2/Pods-NailFinder2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E443951715560830F69B57DF /* Pods_NailFinder2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E550F39B2604E24EF7D1675 /* Pods_NailFinder2Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +84,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				237B96C1F3E981B56AFDDCF4 /* Pods_NailFinder2UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		67148CDF77FCB7764F23AB00 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7FE00DBA4A40C041E79FB0CC /* Pods-NailFinder2.debug.xcconfig */,
+				EB6134298E02D12CC2C5AE50 /* Pods-NailFinder2.release.xcconfig */,
+				52328DBED372930A3C0F7DB0 /* Pods-NailFinder2Tests.debug.xcconfig */,
+				7041835F10A721FDB244EE07 /* Pods-NailFinder2Tests.release.xcconfig */,
+				1989088403213A850872245B /* Pods-NailFinder2UITests.debug.xcconfig */,
+				87663C1112236F06A3817261 /* Pods-NailFinder2UITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8E94674520891332002A4EF1 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +111,8 @@
 				8E94676520891332002A4EF1 /* NailFinder2Tests */,
 				8E94677020891332002A4EF1 /* NailFinder2UITests */,
 				8E94674F20891332002A4EF1 /* Products */,
+				67148CDF77FCB7764F23AB00 /* Pods */,
+				9996C25ECFEFB3EEAF197924 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +135,7 @@
 				8E94675820891332002A4EF1 /* Assets.xcassets */,
 				8E94675A20891332002A4EF1 /* LaunchScreen.storyboard */,
 				8E94675D20891332002A4EF1 /* Info.plist */,
+				8E94677F208913A6002A4EF1 /* GoogleService-Info.plist */,
 			);
 			path = NailFinder2;
 			sourceTree = "<group>";
@@ -125,6 +158,16 @@
 			path = NailFinder2UITests;
 			sourceTree = "<group>";
 		};
+		9996C25ECFEFB3EEAF197924 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5AD2C68C93F3F474927D0FEF /* Pods_NailFinder2.framework */,
+				C97AA6369CD00D919C3D95C6 /* Pods_NailFinder2Tests.framework */,
+				91A555DAB73A5292F7F71625 /* Pods_NailFinder2UITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +175,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E94677620891332002A4EF1 /* Build configuration list for PBXNativeTarget "NailFinder2" */;
 			buildPhases = (
+				44D00A2102C6CAAFA034DB95 /* [CP] Check Pods Manifest.lock */,
 				8E94674A20891332002A4EF1 /* Sources */,
 				8E94674B20891332002A4EF1 /* Frameworks */,
 				8E94674C20891332002A4EF1 /* Resources */,
+				C4CF1145D9ED665C129BC115 /* [CP] Embed Pods Frameworks */,
+				53DBFD74C532E09DC5EBF98C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,9 +195,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E94677920891332002A4EF1 /* Build configuration list for PBXNativeTarget "NailFinder2Tests" */;
 			buildPhases = (
+				869BD41FA0F504F41834BB51 /* [CP] Check Pods Manifest.lock */,
 				8E94675E20891332002A4EF1 /* Sources */,
 				8E94675F20891332002A4EF1 /* Frameworks */,
 				8E94676020891332002A4EF1 /* Resources */,
+				3347EBFDD8989927A159F3A2 /* [CP] Embed Pods Frameworks */,
+				90732E94E69467849AF2F3E1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +216,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E94677C20891332002A4EF1 /* Build configuration list for PBXNativeTarget "NailFinder2UITests" */;
 			buildPhases = (
+				E096FBC0A5F9424536C8D8C6 /* [CP] Check Pods Manifest.lock */,
 				8E94676920891332002A4EF1 /* Sources */,
 				8E94676A20891332002A4EF1 /* Frameworks */,
 				8E94676B20891332002A4EF1 /* Resources */,
+				4028E44F12E84F132FD2D8A8 /* [CP] Embed Pods Frameworks */,
+				65D83C62E2B892D8C4F86BA9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -233,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E94675C20891332002A4EF1 /* LaunchScreen.storyboard in Resources */,
+				8E946780208913A7002A4EF1 /* GoogleService-Info.plist in Resources */,
 				8E94675920891332002A4EF1 /* Assets.xcassets in Resources */,
 				8E94675720891332002A4EF1 /* Main.storyboard in Resources */,
 			);
@@ -253,6 +306,160 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3347EBFDD8989927A159F3A2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NailFinder2Tests/Pods-NailFinder2Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4028E44F12E84F132FD2D8A8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NailFinder2UITests/Pods-NailFinder2UITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		44D00A2102C6CAAFA034DB95 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NailFinder2-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		53DBFD74C532E09DC5EBF98C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NailFinder2/Pods-NailFinder2-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		65D83C62E2B892D8C4F86BA9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NailFinder2UITests/Pods-NailFinder2UITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		869BD41FA0F504F41834BB51 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NailFinder2Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		90732E94E69467849AF2F3E1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NailFinder2Tests/Pods-NailFinder2Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C4CF1145D9ED665C129BC115 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-NailFinder2/Pods-NailFinder2-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NailFinder2/Pods-NailFinder2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E096FBC0A5F9424536C8D8C6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NailFinder2UITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8E94674A20891332002A4EF1 /* Sources */ = {
@@ -424,6 +631,7 @@
 		};
 		8E94677720891332002A4EF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7FE00DBA4A40C041E79FB0CC /* Pods-NailFinder2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -438,6 +646,7 @@
 		};
 		8E94677820891332002A4EF1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB6134298E02D12CC2C5AE50 /* Pods-NailFinder2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -452,6 +661,7 @@
 		};
 		8E94677A20891332002A4EF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52328DBED372930A3C0F7DB0 /* Pods-NailFinder2Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -468,6 +678,7 @@
 		};
 		8E94677B20891332002A4EF1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7041835F10A721FDB244EE07 /* Pods-NailFinder2Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -484,6 +695,7 @@
 		};
 		8E94677D20891332002A4EF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1989088403213A850872245B /* Pods-NailFinder2UITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -499,6 +711,7 @@
 		};
 		8E94677E20891332002A4EF1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87663C1112236F06A3817261 /* Pods-NailFinder2UITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
