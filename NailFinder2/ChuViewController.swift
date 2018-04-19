@@ -17,12 +17,20 @@ class ChuViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var callThoBtn: UIButton!
     var locationManager = CLLocationManager()
     var userLocation = CLLocationCoordinate2D()
+    var uberHasBeenCalled = false
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        if let email = Auth.auth().currentUser?.email{
+            Database.database().reference().child("NailRequest").queryOrdered(byChild: "email").queryEqual(toValue: email).observe(.childAdded, with: { (snapshot) in
+                self.uberHasBeenCalled = true
+                self.callThoBtn.setTitle("Cancel Request", for: .normal)
+                Database.database().reference().child("NailRequest").removeAllObservers()
+            })
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -40,12 +48,26 @@ class ChuViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     @IBAction func logoutTapped(_ sender: Any) {
+        try? Auth.auth().signOut()
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func callThoTapped(_ sender: Any) {
         if let email = Auth.auth().currentUser?.email{
-            let rideRequestDictionary : [String:Any] = ["email": email, "lat":userLocation.latitude, "lon":userLocation.longitude]
-            Database.database().reference().child("NailRequest").childByAutoId().setValue(rideRequestDictionary)
+            if uberHasBeenCalled {
+                uberHasBeenCalled = false
+                callThoBtn.setTitle("Call Manicurist", for: .normal)
+                Database.database().reference().child("NailRequest").queryOrdered(byChild: "email").queryEqual(toValue: email).observe(.childAdded, with: { (snapshot) in snapshot.ref.removeValue()
+                    Database.database().reference().child("NailRequest").removeAllObservers()
+                })
+            } else {
+                let rideRequestDictionary : [String:Any] = ["email": email, "lat":userLocation.latitude, "lon":userLocation.longitude]
+                Database.database().reference().child("NailRequest").childByAutoId().setValue(rideRequestDictionary)
+                uberHasBeenCalled = true
+                callThoBtn.setTitle("Cancel Your Request", for: .normal)
+            }
+            
+           
         }
     }
 }
