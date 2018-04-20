@@ -29,7 +29,7 @@ class AcceptRequestViewController: UIViewController {
     @IBAction func acceptTapped(_ sender: Any) {
         //Update Ride request
         Database.database().reference().child("NailRequest").queryOrdered(byChild: "email").queryEqual(toValue: requestEmail).observe(.childAdded) { (snapshot) in
-            snapshot.ref.updateChildValues(["driverLat":self.driverLocation.latitude, "diverLon":self.driverLocation.longitude])
+            snapshot.ref.updateChildValues(["driverLat":self.driverLocation.latitude, "driverLon":self.driverLocation.longitude])
             Database.database().reference().child("NailRequest").removeAllObservers()
         }
         //Give Direction
