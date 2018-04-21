@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var driverLabel: UILabel!
@@ -24,8 +25,60 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-
+    
+//TEST BEGIN
+    @IBAction func testTapped(_ sender: Any) {
+        if emailTextField.text == "" || passwordTextField.text == "" {
+            displayAlert(title: "Missing Information", message: "You must provide email and Password")
+        } else {
+            if let email = emailTextField.text {
+                if let password = passwordTextField.text {
+                    if signUpMode {
+                        //Sign Up
+                        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+                            if error != nil {
+                                self.displayAlert(title: "Error", message: error!.localizedDescription)
+                            } else {
+                                if self.riderDriverSwitch.isOn {
+                                    //Driver
+                                    let req = Auth.auth().currentUser?.createProfileChangeRequest()
+                                    req?.displayName = "Driver"
+                                    req?.commitChanges(completion: nil)
+                                    self.performSegue(withIdentifier: "chuSegue2", sender: nil)
+                                } else {
+                                    //Rider
+                                    let req = Auth.auth().currentUser?.createProfileChangeRequest()
+                                    req?.displayName = "Rider"
+                                    req?.commitChanges(completion: nil)
+                                    self.performSegue(withIdentifier: "chuSegue", sender: nil)
+                                }
+                                
+                            }
+                        }
+                        
+                    } else {
+                        //Log in
+                        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+                            if error != nil {
+                                self.displayAlert(title: "Error", message: error!.localizedDescription)
+                            } else {
+                                if user?.displayName == "Driver" {
+                                    //Driver
+                                    self.performSegue(withIdentifier: "chuSegue2", sender: nil)
+                                } else {
+                                    //Rider
+                                    self.performSegue(withIdentifier: "chuSegue", sender: nil)
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+//END TEST
+    
     @IBAction func topTapped(_ sender: Any) {
         if emailTextField.text == "" || passwordTextField.text == "" {
             displayAlert(title: "Missing Information", message: "You must provide email and Password")

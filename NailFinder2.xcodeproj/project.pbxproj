@@ -20,6 +20,8 @@
 		8E94678220892A28002A4EF1 /* ChuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94678120892A28002A4EF1 /* ChuViewController.swift */; };
 		8E946786208945AF002A4EF1 /* DriverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E946785208945AF002A4EF1 /* DriverTableViewController.swift */; };
 		8E946788208958AD002A4EF1 /* AcceptRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E946787208958AD002A4EF1 /* AcceptRequestViewController.swift */; };
+		8EDA5C64208B096900A4BE90 /* ChuMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDA5C63208B096900A4BE90 /* ChuMapViewController.swift */; };
+		8EDA5C66208BBD0300A4BE90 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDA5C65208BBD0300A4BE90 /* LoginTextField.swift */; };
 		E443951715560830F69B57DF /* Pods_NailFinder2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD2C68C93F3F474927D0FEF /* Pods_NailFinder2.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +66,8 @@
 		8E94678120892A28002A4EF1 /* ChuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuViewController.swift; sourceTree = "<group>"; };
 		8E946785208945AF002A4EF1 /* DriverTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverTableViewController.swift; sourceTree = "<group>"; };
 		8E946787208958AD002A4EF1 /* AcceptRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptRequestViewController.swift; sourceTree = "<group>"; };
+		8EDA5C63208B096900A4BE90 /* ChuMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuMapViewController.swift; sourceTree = "<group>"; };
+		8EDA5C65208BBD0300A4BE90 /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		91A555DAB73A5292F7F71625 /* Pods_NailFinder2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NailFinder2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C97AA6369CD00D919C3D95C6 /* Pods_NailFinder2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NailFinder2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6134298E02D12CC2C5AE50 /* Pods-NailFinder2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NailFinder2.release.xcconfig"; path = "Pods/Target Support Files/Pods-NailFinder2/Pods-NailFinder2.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,9 +141,11 @@
 			children = (
 				8E94675120891332002A4EF1 /* AppDelegate.swift */,
 				8E94675320891332002A4EF1 /* ViewController.swift */,
+				8EDA5C65208BBD0300A4BE90 /* LoginTextField.swift */,
 				8E94678120892A28002A4EF1 /* ChuViewController.swift */,
 				8E946785208945AF002A4EF1 /* DriverTableViewController.swift */,
 				8E946787208958AD002A4EF1 /* AcceptRequestViewController.swift */,
+				8EDA5C63208B096900A4BE90 /* ChuMapViewController.swift */,
 				8E94675520891332002A4EF1 /* Main.storyboard */,
 				8E94675820891332002A4EF1 /* Assets.xcassets */,
 				8E94675A20891332002A4EF1 /* LaunchScreen.storyboard */,
@@ -479,9 +485,11 @@
 			files = (
 				8E94675420891332002A4EF1 /* ViewController.swift in Sources */,
 				8E946786208945AF002A4EF1 /* DriverTableViewController.swift in Sources */,
+				8EDA5C64208B096900A4BE90 /* ChuMapViewController.swift in Sources */,
 				8E94675220891332002A4EF1 /* AppDelegate.swift in Sources */,
 				8E94678220892A28002A4EF1 /* ChuViewController.swift in Sources */,
 				8E946788208958AD002A4EF1 /* AcceptRequestViewController.swift in Sources */,
+				8EDA5C66208BBD0300A4BE90 /* LoginTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

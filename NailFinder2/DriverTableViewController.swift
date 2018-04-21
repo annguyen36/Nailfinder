@@ -14,7 +14,10 @@ import MapKit
 class DriverTableViewController: UITableViewController, CLLocationManagerDelegate {
     var rideRequests: [DataSnapshot] = []
     var locationManager = CLLocationManager()
-    var driverLocation = CLLocationCoordinate2D()
+    var chuLocation = CLLocationCoordinate2D()
+    var email = Auth.auth().currentUser?.email
+        //if let email = Auth.auth().currentUser?.email{
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
@@ -24,7 +27,7 @@ class DriverTableViewController: UITableViewController, CLLocationManagerDelegat
         Database.database().reference().child("NailRequest").observe(.childAdded){
             (snapshot) in
             if let rideRequestDictionary = snapshot.value as? [String:AnyObject] {
-                 if let driverLat = rideRequestDictionary["driverLat"] as? Double {
+                 if let chuLat = rideRequestDictionary["chuLat"] as? Double {
                     
                  } else {
                     self.rideRequests.append(snapshot)
@@ -40,7 +43,7 @@ class DriverTableViewController: UITableViewController, CLLocationManagerDelegat
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let coord = manager.location?.coordinate {
-            driverLocation = coord
+            chuLocation = coord
         }
     }
 
@@ -63,7 +66,7 @@ class DriverTableViewController: UITableViewController, CLLocationManagerDelegat
             if let email = rideRequestDictionary["email"] as? String {
                 if let lat = rideRequestDictionary["lat"] as? Double {
                     if let lon = rideRequestDictionary["lon"] as? Double {
-                        let driverCLLocation = CLLocation(latitude: driverLocation.latitude, longitude: driverLocation.longitude)
+                        let driverCLLocation = CLLocation(latitude: chuLocation.latitude, longitude: chuLocation.longitude)
                         let riderCLLocation = CLLocation(latitude: lat, longitude: lon)
                         let distance = driverCLLocation.distance(from: riderCLLocation) / 1000
                         let roundDistance = round(distance * 100) / 100
@@ -86,13 +89,16 @@ class DriverTableViewController: UITableViewController, CLLocationManagerDelegat
         if let acceptVC = segue.destination as? AcceptRequestViewController {
             if let snapshot = sender as? DataSnapshot {
                 if let rideRequestDictionary = snapshot.value as? [String:AnyObject] {
-                    if let email = rideRequestDictionary["email"] as? String {
+                    if let requestEmail = rideRequestDictionary["email"] as? String {
                         if let lat = rideRequestDictionary["lat"] as? Double {
                             if let lon = rideRequestDictionary["lon"] as? Double {
-                                acceptVC.requestEmail = email
+                                acceptVC.requestEmail = requestEmail
                                 let location = CLLocationCoordinate2D(latitude: lat, longitude: lon)
                                 acceptVC.requestLocation = location
-                                acceptVC.driverLocation = driverLocation
+                                acceptVC.chuLocation = chuLocation
+                                if let email = email {
+                                acceptVC.email = email
+                                }
                             }
                         }
                     }

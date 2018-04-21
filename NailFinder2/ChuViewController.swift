@@ -13,44 +13,70 @@ import FirebaseAuth
 
 class ChuViewController: UIViewController, CLLocationManagerDelegate {
     
+    @IBOutlet weak var noBtn: UIButton!
+    @IBOutlet weak var yesBtn: UIButton!
+    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var youHaveAnOfferLabel: UILabel!
+    @IBOutlet weak var messLabel: UILabel!
+    @IBOutlet weak var acceptBtn: UIButton!
+    @IBOutlet weak var avaSwitch: UISwitch!
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var callThoBtn: UIButton!
     var locationManager = CLLocationManager()
-    var userLocation = CLLocationCoordinate2D()
-    var uberHasBeenCalled = false
-    var driverOnTheWay = false
-    var driverLocation = CLLocationCoordinate2D()
-    
+    var thoLocation = CLLocationCoordinate2D()
+    var availableState = false
+    var callingFromChu = false
+    var chuLocation = CLLocationCoordinate2D()
+    var chuEmail = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
+        //switch control
+//        if self.avaSwitch.isOn {
+//            self.callThoBtn.setTitle("AVAILABLE", for: .normal)
+//        } else {
+//            self.callThoBtn.setTitle("BUSY", for: .normal)
+//        }
+    
+        
+        
         if let email = Auth.auth().currentUser?.email{
             Database.database().reference().child("NailRequest").queryOrdered(byChild: "email").queryEqual(toValue: email).observe(.childAdded, with: { (snapshot) in
-                self.uberHasBeenCalled = true
-                self.callThoBtn.setTitle("Cancel Request", for: .normal)
+                self.availableState = true
+                self.callThoBtn.setTitle("AVAILABLE", for: .normal)
+                self.avaSwitch.isOn = true
                 Database.database().reference().child("NailRequest").removeAllObservers()
                 
+                //WHEN SHOPOWNER CALL
                 if let rideRequestDictionary = snapshot.value as? [String:AnyObject] {
                   
-                    if let driverLat = rideRequestDictionary["driverLat"] as? Double {
+                    if let driverLat = rideRequestDictionary["chuLat"] as? Double {
                       
-                        if let driverLon = rideRequestDictionary["driverLon"] as? Double {
+                        if let driverLon = rideRequestDictionary["chuLon"] as? Double {
                        
-                            self.driverLocation = CLLocationCoordinate2D(latitude: driverLat, longitude: driverLon)
-                            self.driverOnTheWay = true
-                            self.displayDriverAndRider()
-                    
+                            self.chuLocation = CLLocationCoordinate2D(latitude: driverLat, longitude: driverLon)
+                            self.callingFromChu = true
+                            self.callThoBtn.isHidden = true
+                            self.avaSwitch.isHidden = true
+                            self.youHaveAnOfferLabel.isHidden = false
+                            self.acceptBtn.isHidden = false
+                            self.displayChuAndTho()
+                            
                             if let email = Auth.auth().currentUser?.email {
                                 Database.database().reference().child("NailRequest").queryOrdered(byChild: "email").queryEqual(toValue: email).observe(.childChanged, with: { (snapshot) in
                                     if let rideRequestDictionary = snapshot.value as? [String:AnyObject] {
-                                        if let driverLat = rideRequestDictionary["driverLat"] as? Double {
-                                            if let driverLon = rideRequestDictionary["driverLon"] as? Double {
-                                                self.driverLocation = CLLocationCoordinate2D(latitude: driverLat, longitude: driverLon)
-                                                self.driverOnTheWay = true
-                                                self.displayDriverAndRider()
+                                        if let driverLat = rideRequestDictionary["chuLat"] as? Double {
+                                            if let driverLon = rideRequestDictionary["chuLon"] as? Double {
+                                                self.chuLocation = CLLocationCoordinate2D(latitude: driverLat, longitude: driverLon)
+                                                self.callingFromChu = true
+                                                self.displayChuAndTho()
+                                                if let chuEmailtemp = rideRequestDictionary["callingEmail"] as? String {
+                                                    self.chuEmail = chuEmailtemp
+                                                }
                                             }
                                         }
                                         
@@ -65,43 +91,44 @@ class ChuViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+
     
-    func displayDriverAndRider() {
-        let driverCLLocation = CLLocation(latitude: driverLocation.latitude, longitude: driverLocation.longitude)
-        let riderCLLocation = CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude)
-        let distance = driverCLLocation.distance(from: riderCLLocation) / 1000
+    func displayChuAndTho() {
+        let chuCLLocation = CLLocation(latitude: chuLocation.latitude, longitude: chuLocation.longitude)
+        let thoCLLocation = CLLocation(latitude: thoLocation.latitude, longitude: thoLocation.longitude)
+        let distance = chuCLLocation.distance(from: thoCLLocation) / 1000
      
         let roundDistance = round(distance * 100) / 100
-       
-        callThoBtn.setTitle("Your Driver is \(roundDistance)km away", for: .normal)
+        messLabel.text = "The Salon is \(roundDistance)km away"
+//        callThoBtn.setTitle("You Have an Offer! The Salon is \(roundDistance)km away", for: .normal)
         map.removeAnnotations(map.annotations)
         
-        let latDelta = abs(driverLocation.latitude - userLocation.latitude) * 2 + 0.005
-        let lonDelta = abs(driverLocation.longitude - userLocation.longitude) * 2 + 0.005
+        let latDelta = abs(chuLocation.latitude - thoLocation.latitude) * 2 + 0.005
+        let lonDelta = abs(chuLocation.longitude - thoLocation.longitude) * 2 + 0.005
         
-        let region = MKCoordinateRegion(center: userLocation, span: MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: lonDelta))
+        let region = MKCoordinateRegion(center: thoLocation, span: MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: lonDelta))
         map.setRegion(region, animated: true)
         
-        let riderAnno = MKPointAnnotation()
-        riderAnno.coordinate = userLocation
-        riderAnno.title = "Your Location"
-        map.addAnnotation(riderAnno)
+        let thoAnno = MKPointAnnotation()
+        thoAnno.coordinate = thoLocation
+        thoAnno.title = "Your Location"
+        map.addAnnotation(thoAnno)
         
-        let driverAnno = MKPointAnnotation()
-        driverAnno.coordinate = driverLocation
-        driverAnno.title = "Your Driver"
-        map.addAnnotation(driverAnno)
+        let chuAnno = MKPointAnnotation()
+        chuAnno.coordinate = chuLocation
+        chuAnno.title = "Your Salon Shop"
+        map.addAnnotation(chuAnno)
         
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let coord = manager.location?.coordinate {
             let center = CLLocationCoordinate2D(latitude: coord.latitude, longitude: coord.longitude)
-            userLocation = center
+            thoLocation = center
             
-            if uberHasBeenCalled {
-                if driverOnTheWay{
-                    displayDriverAndRider()
+            if availableState {
+                if callingFromChu{
+                    displayChuAndTho()
                 }
                 
             } else {
@@ -121,20 +148,70 @@ class ChuViewController: UIViewController, CLLocationManagerDelegate {
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
+    
+    @IBAction func acceptTapped(_ sender: Any) {
+        questionLabel.isHidden = false
+        yesBtn.isHidden = false
+        noBtn.isHidden = false
+        acceptBtn.isHidden = true
+        youHaveAnOfferLabel.isHidden = true
+        messLabel.isHidden = true
+        
+    }
+    
+    @IBAction func noTapped(_ sender: Any) {
+        callThoBtn.isHidden = false
+        avaSwitch.isHidden = false
+        questionLabel.isHidden = true
+        yesBtn.isHidden = true
+        noBtn.isHidden = true
+        if let email = Auth.auth().currentUser?.email{
+            callingFromChu = false
+            availableState = false
+            avaSwitch.isOn = false
+            callThoBtn.setTitle("BUSY", for: .normal)
+            Database.database().reference().child("NailRequest").queryOrdered(byChild: "email").queryEqual(toValue: email).observe(.childAdded, with: { (snapshot) in snapshot.ref.removeValue()
+                Database.database().reference().child("NailRequest").removeAllObservers()
+            })
+        }
+        
+    }
+    
+    
+    @IBAction func yesTapped(_ sender: Any) {
+        //UPDATE INFORMATION
+        
+        //give direction
+        let requestCLLocation = CLLocation(latitude: chuLocation.latitude, longitude: chuLocation.longitude)
+        CLGeocoder().reverseGeocodeLocation(requestCLLocation) { (placemarks, error) in
+            if let placemarks = placemarks {
+                if placemarks.count > 0 {
+                    let placemark = MKPlacemark(placemark: placemarks[0])
+                    let mapItem = MKMapItem(placemark: placemark)
+                    mapItem.name = self.chuEmail
+                    let options = [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving]
+                    mapItem.openInMaps(launchOptions: options)
+                }
+            }
+        }
+    }
+    
     @IBAction func callThoTapped(_ sender: Any) {
-        if driverOnTheWay == false {
+        if callingFromChu == false {
             if let email = Auth.auth().currentUser?.email{
-                if uberHasBeenCalled {
-                    uberHasBeenCalled = false
-                    callThoBtn.setTitle("Call Manicurist", for: .normal)
+                if availableState {
+                    availableState = false
+                    avaSwitch.isOn = false
+                    callThoBtn.setTitle("BUSY", for: .normal)
                     Database.database().reference().child("NailRequest").queryOrdered(byChild: "email").queryEqual(toValue: email).observe(.childAdded, with: { (snapshot) in snapshot.ref.removeValue()
                         Database.database().reference().child("NailRequest").removeAllObservers()
                     })
                 } else {
-                    let rideRequestDictionary : [String:Any] = ["email": email, "lat":userLocation.latitude, "lon":userLocation.longitude]
+                    let rideRequestDictionary : [String:Any] = ["email": email, "lat":thoLocation.latitude, "lon":thoLocation.longitude]
                     Database.database().reference().child("NailRequest").childByAutoId().setValue(rideRequestDictionary)
-                    uberHasBeenCalled = true
-                    callThoBtn.setTitle("Cancel Your Request", for: .normal)
+                    availableState = true
+                    avaSwitch.isOn = true
+                    callThoBtn.setTitle("AVAILABLE", for: .normal)
                 }
             }
         }
