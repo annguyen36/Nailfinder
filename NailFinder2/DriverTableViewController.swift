@@ -16,6 +16,7 @@ class DriverTableViewController: UITableViewController, CLLocationManagerDelegat
     var locationManager = CLLocationManager()
     var chuLocation = CLLocationCoordinate2D()
     var email = Auth.auth().currentUser?.email
+
         //if let email = Auth.auth().currentUser?.email{
     
     override func viewDidLoad() {
@@ -63,14 +64,18 @@ class DriverTableViewController: UITableViewController, CLLocationManagerDelegat
         let cell = tableView.dequeueReusableCell(withIdentifier: "rideRequestCell", for: indexPath)
         let snapshot = rideRequests[indexPath.row]
         if let rideRequestDictionary = snapshot.value as? [String:AnyObject] {
+            
+            
             if let email = rideRequestDictionary["email"] as? String {
                 if let lat = rideRequestDictionary["lat"] as? Double {
                     if let lon = rideRequestDictionary["lon"] as? Double {
-                        let driverCLLocation = CLLocation(latitude: chuLocation.latitude, longitude: chuLocation.longitude)
-                        let riderCLLocation = CLLocation(latitude: lat, longitude: lon)
-                        let distance = driverCLLocation.distance(from: riderCLLocation) / 1000
-                        let roundDistance = round(distance * 100) / 100
-                        cell.textLabel?.text = "\(email) - \(roundDistance)km away"
+                       
+                            let driverCLLocation = CLLocation(latitude: chuLocation.latitude, longitude: chuLocation.longitude)
+                            let riderCLLocation = CLLocation(latitude: lat, longitude: lon)
+                            let distance = driverCLLocation.distance(from: riderCLLocation) / 1000
+                            let roundDistance = round(distance * 100) / 100
+                            cell.textLabel?.text = "\(email) - \(roundDistance)km away"
+                        
                     }
                 }
                 

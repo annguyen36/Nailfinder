@@ -11,7 +11,7 @@ import MapKit
 import FirebaseDatabase
 import FirebaseAuth
 
-class ChuViewController: UIViewController, CLLocationManagerDelegate {
+class ThoViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var noBtn: UIButton!
     @IBOutlet weak var yesBtn: UIButton!
