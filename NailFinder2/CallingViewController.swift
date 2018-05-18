@@ -9,6 +9,8 @@
 import UIKit
 import MapKit
 import FirebaseDatabase
+import FirebaseAuth
+import UserNotifications
 
 class CallingViewController: UIViewController, CLLocationManagerDelegate {
 
@@ -32,6 +34,8 @@ class CallingViewController: UIViewController, CLLocationManagerDelegate {
 //        map.addAnnotation(annotation)
         
         displayChuAndTho()
+        
+        
         
     }
 
@@ -68,6 +72,22 @@ class CallingViewController: UIViewController, CLLocationManagerDelegate {
             snapshot.ref.updateChildValues(["chuLat":self.chuLocation.latitude, "chuLon":self.chuLocation.longitude, "callingEmail":self.chuEmail])
             Database.database().reference().child("NailRequest").removeAllObservers()
         }
+        
+        if let email = Auth.auth().currentUser?.email {
+            Database.database().reference().child("user").queryOrdered(byChild: "email").queryEqual(toValue: email).observe(.childAdded, with: { (snapshot) in
+                if let userData = snapshot.value as? [String:AnyObject] {
+                    if let name = userData["name"] as? String {
+                        
+                        Database.database().reference().child("NailRequest").queryOrdered(byChild: "email").queryEqual(toValue: self.thoEmail).observe(.childAdded) { (snapshot) in
+                            snapshot.ref.updateChildValues(["chuName":name])
+                            Database.database().reference().child("NailRequest").removeAllObservers()
+                        }
+                    }
+                }
+            })
+            
+        }
+        
         performSegue(withIdentifier: "afterCallSegue", sender: nil)
     }
     

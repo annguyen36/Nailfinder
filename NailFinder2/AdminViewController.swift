@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class AdminViewController: UIViewController {
 
@@ -41,12 +42,23 @@ class AdminViewController: UIViewController {
                             }
                             req?.commitChanges(completion: nil)
                             self.displayAlert(title: "Success", message: "Your Shop Have been created!")
-                            
+                            if let user = user {
+                                Database.database().reference().child("user").child(user.uid).child("email").setValue(email)
+                                Database.database().reference().child("user").child(user.uid).child("role").setValue("Shop")
+                                
+                                if let name = self.nameTextField.text {
+                                    Database.database().reference().child("user").child(user.uid).child("name").setValue(name)
+                                }
+                            }
                         }
                     }
                 }
             }
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     func displayAlert(title:String, message:String){

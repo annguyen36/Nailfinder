@@ -10,8 +10,9 @@ import UIKit
 import FirebaseAuth
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -21,6 +22,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboard()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -84,6 +86,11 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     func displayAlert(title:String, message:String){
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -143,5 +150,22 @@ class ViewController: UIViewController {
     //    }
     //    //END TEST
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        scrollView.setContentOffset(CGPoint(x: 0, y: 120), animated: true)
+        
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+    }
+    
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
+
 

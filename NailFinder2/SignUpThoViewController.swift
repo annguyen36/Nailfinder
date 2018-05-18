@@ -43,12 +43,17 @@ class SignUpThoViewController: UIViewController {
                             //ADD To user DB
                             if let user = user {
                                 Database.database().reference().child("user").child(user.uid).child("email").setValue(email)
+                                Database.database().reference().child("user").child(user.uid).child("role").setValue("Manicurist")
                             }
                         }
                     }
                 }
             }
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     func displayAlert(title:String, message:String){

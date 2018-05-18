@@ -11,8 +11,10 @@ import FirebaseAuth
 import FirebaseDatabase
 import MapKit
 
+
 class ChuMapViewController: UIViewController, CLLocationManagerDelegate {
     
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var map: MKMapView!
     
     var locationManager = CLLocationManager()
@@ -30,6 +32,15 @@ class ChuMapViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
 
+        if let email = Auth.auth().currentUser?.email {
+            Database.database().reference().child("user").queryOrdered(byChild: "email").queryEqual(toValue: email).observe(.childAdded, with: { (snapshot) in
+                if let userData = snapshot.value as? [String:AnyObject] {
+                    if let name = userData["name"] as? String {
+                        self.nameLabel.text = name
+                    }
+                }
+            })
+        }
         // Do any additional setup after loading the view.
         
         if let chuEmail = Auth.auth().currentUser?.email{
@@ -80,7 +91,7 @@ class ChuMapViewController: UIViewController, CLLocationManagerDelegate {
         //        callThoBtn.setTitle("You Have an Offer! The Salon is \(roundDistance)km away", for: .normal)
         //map.removeAnnotations(map.annotations)
         
-        let region = MKCoordinateRegion(center: chuLocation, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+        let region = MKCoordinateRegion(center: chuLocation, span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15))
         map.setRegion(region, animated: true)
         
         let thoAnno = MKPointAnnotation()
@@ -102,7 +113,7 @@ class ChuMapViewController: UIViewController, CLLocationManagerDelegate {
             if calling {
                 displayChuAndTho()
             }
-            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15))
             map.setRegion(region, animated: true)
             map.removeAnnotations(map.annotations)
             let annotation = MKPointAnnotation()

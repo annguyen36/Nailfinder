@@ -11,7 +11,9 @@ import Firebase
 
 class ChuTableViewCell: UITableViewCell {
 
-
+    @IBOutlet weak var howFarLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var thoImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

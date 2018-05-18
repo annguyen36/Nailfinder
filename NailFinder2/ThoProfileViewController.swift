@@ -12,24 +12,38 @@ import FirebaseAuth
 import FirebaseStorage
 import SDWebImage
 
-class ThoProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ThoProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var emailTextfield: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var image: UIImageView!
     var imagePicker : UIImagePickerController?
     var imageAdded = false
     override func viewDidLoad() {
+        self.hideKeyboard()
         super.viewDidLoad()
         imagePicker = UIImagePickerController()
         imagePicker?.delegate = self
+        
+        
         if let email = Auth.auth().currentUser?.email {
+           self.emailTextfield.text = email
             Database.database().reference().child("user").queryOrdered(byChild: "email").queryEqual(toValue: email).observe(.childAdded, with: { (snapshot) in
                 if let userData = snapshot.value as? [String:AnyObject] {
                     if let imageURL = userData["imageURL"] as? String {
                         if let url = URL (string: imageURL){
                             self.image.sd_setImage(with: url)
                         }
-                        
                     }
+                    if let name = userData["name"] as? String {
+                        self.nameTextField.text = name
+                    }
+                    if let phone = userData["phone"] as? String {
+                        self.phoneTextField.text = phone
+                    }
+                    
                 }
             })
         }
@@ -82,6 +96,21 @@ class ThoProfileViewController: UIViewController, UIImagePickerControllerDelegat
                 }
             }
         }
+        
+        if let name = nameTextField.text {
+            if let currentUserUid = Auth.auth().currentUser?.uid {
+                Database.database().reference().child("user").child(currentUserUid).child("name").setValue(name)
+            }
+        }
+        if let phone = phoneTextField.text {
+            if let currentUserUid = Auth.auth().currentUser?.uid {
+                Database.database().reference().child("user").child(currentUserUid).child("phone").setValue(phone)
+            }
+        }
+        
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     func displayAlert(title:String, message:String){
@@ -93,6 +122,20 @@ class ThoProfileViewController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func logout(_ sender: Any) {
         try? Auth.auth().signOut()
         navigationController?.dismiss(animated: true, completion: nil)
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        scrollView.setContentOffset(CGPoint(x: 0, y: 130), animated: true)
+        
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
 }

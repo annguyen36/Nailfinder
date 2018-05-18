@@ -10,9 +10,15 @@ import UIKit
 import MapKit
 import FirebaseDatabase
 import FirebaseAuth
+import FirebaseStorage
+import SDWebImage
+import UserNotifications
+
 
 class ThoViewController: UIViewController, CLLocationManagerDelegate {
     
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var noBtn: UIButton!
     @IBOutlet weak var yesBtn: UIButton!
     @IBOutlet weak var questionLabel: UILabel!
@@ -22,18 +28,35 @@ class ThoViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var avaSwitch: UISwitch!
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var callThoBtn: UIButton!
+    
     var locationManager = CLLocationManager()
     var thoLocation = CLLocationCoordinate2D()
     var availableState = false
     var callingFromChu = false
     var chuLocation = CLLocationCoordinate2D()
     var chuEmail = ""
+    var disclaimerHasBeenDisplayed = false
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if disclaimerHasBeenDisplayed == false {
+            
+            disclaimerHasBeenDisplayed = true
+            
+            let alertController = UIAlertController(title: "Update", message: "Please update your name and picture first!", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "Accept", style: UIAlertActionStyle.default,handler: nil))
+                
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
         
         //switch control
 //        if self.avaSwitch.isOn {
@@ -43,6 +66,22 @@ class ThoViewController: UIViewController, CLLocationManagerDelegate {
 //        }
     
         
+        if let email = Auth.auth().currentUser?.email {
+        
+            Database.database().reference().child("user").queryOrdered(byChild: "email").queryEqual(toValue: email).observe(.childAdded, with: { (snapshot) in
+                if let userData = snapshot.value as? [String:AnyObject] {
+                    if let imageURL = userData["imageURL"] as? String {
+                        if let url = URL (string: imageURL){
+                            self.avatar.sd_setImage(with: url)
+                        }
+                    }
+                    if let name = userData["name"] as? String {
+                        self.nameLabel.text = name
+                    }
+                    
+                }
+            })
+        }
         
         if let email = Auth.auth().currentUser?.email{
             Database.database().reference().child("NailRequest").queryOrdered(byChild: "email").queryEqual(toValue: email).observe(.childAdded, with: { (snapshot) in
@@ -51,10 +90,22 @@ class ThoViewController: UIViewController, CLLocationManagerDelegate {
                 self.avaSwitch.isOn = true
                 Database.database().reference().child("NailRequest").removeAllObservers()
                 
+                
                 //WHEN SHOPOWNER CALL
                 if let rideRequestDictionary = snapshot.value as? [String:AnyObject] {
-                  
-                    if let driverLat = rideRequestDictionary["chuLat"] as? Double {
+                  //When Accepted Calling
+                    
+                    if let thoName = rideRequestDictionary["thoName"] as? String {
+                        self.callThoBtn.isHidden = true
+                        self.avaSwitch.isHidden = true
+                        self.youHaveAnOfferLabel.isHidden = false
+                        self.noBtn.setTitle("Yes", for: .normal)
+                        self.noBtn.isHidden = false
+                        self.youHaveAnOfferLabel.text = "Did you finish your job, \(thoName)?"
+                    }
+                    
+                    
+                   else if let driverLat = rideRequestDictionary["chuLat"] as? Double {
                       
                         if let driverLon = rideRequestDictionary["chuLon"] as? Double {
                        
@@ -65,6 +116,19 @@ class ThoViewController: UIViewController, CLLocationManagerDelegate {
                             self.youHaveAnOfferLabel.isHidden = false
                             self.acceptBtn.isHidden = false
                             self.displayChuAndTho()
+                            if let name = rideRequestDictionary["chuName"] as? String {
+                                self.youHaveAnOfferLabel.text = "You have an Offer from \(name)"
+                            }
+                            
+                            //Notification
+                            let content = UNMutableNotificationContent()
+                            content.title = "You have an Offer!"
+                            content.subtitle = "From Nail Salon near you"
+                            content.body = "Click here to accept your job"
+                            content.badge = 1
+                            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+                            let request = UNNotificationRequest(identifier: "offer", content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
                             
                             if let email = Auth.auth().currentUser?.email {
                                 Database.database().reference().child("NailRequest").queryOrdered(byChild: "email").queryEqual(toValue: email).observe(.childChanged, with: { (snapshot) in
@@ -77,9 +141,12 @@ class ThoViewController: UIViewController, CLLocationManagerDelegate {
                                                 if let chuEmailtemp = rideRequestDictionary["callingEmail"] as? String {
                                                     self.chuEmail = chuEmailtemp
                                                 }
+                                                if let chuName = rideRequestDictionary["chuName"] as? String {
+                                                    self.youHaveAnOfferLabel.text = "You have an Offer from \(chuName)"
+                                                }
                                             }
                                         }
-                                        
+                        
                                     }
                                 })
                             }
@@ -160,6 +227,7 @@ class ThoViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func noTapped(_ sender: Any) {
+        youHaveAnOfferLabel.isHidden = true
         callThoBtn.isHidden = false
         avaSwitch.isHidden = false
         questionLabel.isHidden = true
@@ -174,13 +242,25 @@ class ThoViewController: UIViewController, CLLocationManagerDelegate {
                 Database.database().reference().child("NailRequest").removeAllObservers()
             })
         }
-        
+    
     }
     
     
     @IBAction func yesTapped(_ sender: Any) {
         //UPDATE INFORMATION
-        
+        if let email = Auth.auth().currentUser?.email {
+            Database.database().reference().child("user").queryOrdered(byChild: "email").queryEqual(toValue: email).observe(.childAdded, with: { (snapshot) in
+                if let userData = snapshot.value as? [String:AnyObject] {
+                    if let name = userData["name"] as? String {
+                        Database.database().reference().child("NailRequest").queryOrdered(byChild: "email").queryEqual(toValue: email).observe(.childAdded) { (snapshot) in
+                            snapshot.ref.updateChildValues(["thoName":name,"commingState":true])
+                            Database.database().reference().child("NailRequest").removeAllObservers()
+                        }
+                    }
+                }
+            })
+            
+        }
         //give direction
         let requestCLLocation = CLLocation(latitude: chuLocation.latitude, longitude: chuLocation.longitude)
         CLGeocoder().reverseGeocodeLocation(requestCLLocation) { (placemarks, error) in
@@ -194,6 +274,13 @@ class ThoViewController: UIViewController, CLLocationManagerDelegate {
                 }
             }
         }
+        //GO back to Normal Board
+        callThoBtn.isHidden = false
+        avaSwitch.isHidden = false
+        questionLabel.isHidden = true
+        yesBtn.isHidden = true
+        noBtn.isHidden = true
+        
     }
     
     @IBAction func callThoTapped(_ sender: Any) {

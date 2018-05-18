@@ -9,7 +9,11 @@
 /* Begin PBXBuildFile section */
 		237B96C1F3E981B56AFDDCF4 /* Pods_NailFinder2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A555DAB73A5292F7F71625 /* Pods_NailFinder2UITests.framework */; };
 		3E550F39B2604E24EF7D1675 /* Pods_NailFinder2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97AA6369CD00D919C3D95C6 /* Pods_NailFinder2Tests.framework */; };
+		8E09BD1D209E5FE4002950A5 /* SignUpChu1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E09BD1C209E5FE4002950A5 /* SignUpChu1ViewController.swift */; };
+		8E09BD1F209E68CF002950A5 /* SignUpChu2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E09BD1E209E68CF002950A5 /* SignUpChu2ViewController.swift */; };
 		8E16284F20902E920003A6F7 /* chuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16284E20902E920003A6F7 /* chuTableViewController.swift */; };
+		8E4D0D042096AFDE009389DF /* ChuProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4D0D032096AFDE009389DF /* ChuProfileViewController.swift */; };
+		8E4D0D062097AAC1009389DF /* ThoAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4D0D052097AAC1009389DF /* ThoAvailable.swift */; };
 		8E94675220891332002A4EF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94675120891332002A4EF1 /* AppDelegate.swift */; };
 		8E94675420891332002A4EF1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94675320891332002A4EF1 /* ViewController.swift */; };
 		8E94675720891332002A4EF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E94675520891332002A4EF1 /* Main.storyboard */; };
@@ -57,7 +61,11 @@
 		7041835F10A721FDB244EE07 /* Pods-NailFinder2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NailFinder2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NailFinder2Tests/Pods-NailFinder2Tests.release.xcconfig"; sourceTree = "<group>"; };
 		7FE00DBA4A40C041E79FB0CC /* Pods-NailFinder2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NailFinder2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NailFinder2/Pods-NailFinder2.debug.xcconfig"; sourceTree = "<group>"; };
 		87663C1112236F06A3817261 /* Pods-NailFinder2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NailFinder2UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NailFinder2UITests/Pods-NailFinder2UITests.release.xcconfig"; sourceTree = "<group>"; };
+		8E09BD1C209E5FE4002950A5 /* SignUpChu1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpChu1ViewController.swift; sourceTree = "<group>"; };
+		8E09BD1E209E68CF002950A5 /* SignUpChu2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpChu2ViewController.swift; sourceTree = "<group>"; };
 		8E16284E20902E920003A6F7 /* chuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chuTableViewController.swift; sourceTree = "<group>"; };
+		8E4D0D032096AFDE009389DF /* ChuProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuProfileViewController.swift; sourceTree = "<group>"; };
+		8E4D0D052097AAC1009389DF /* ThoAvailable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoAvailable.swift; sourceTree = "<group>"; };
 		8E94674E20891332002A4EF1 /* NailFinder2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NailFinder2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E94675120891332002A4EF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E94675320891332002A4EF1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -165,10 +173,14 @@
 				8EDA5C63208B096900A4BE90 /* ChuMapViewController.swift */,
 				8E16284E20902E920003A6F7 /* chuTableViewController.swift */,
 				8ECE1E892093F451004754CD /* ChuTableViewCell.swift */,
+				8E4D0D052097AAC1009389DF /* ThoAvailable.swift */,
 				8ED65FB12092B0AF00F3062C /* CallingViewController.swift */,
 				8ED65FB32092DF2A00F3062C /* SignUpThoViewController.swift */,
 				8ECE1E872093DE5D004754CD /* ThoProfileViewController.swift */,
+				8E4D0D032096AFDE009389DF /* ChuProfileViewController.swift */,
 				8E94675520891332002A4EF1 /* Main.storyboard */,
+				8E09BD1C209E5FE4002950A5 /* SignUpChu1ViewController.swift */,
+				8E09BD1E209E68CF002950A5 /* SignUpChu2ViewController.swift */,
 				8E94675820891332002A4EF1 /* Assets.xcassets */,
 				8E94675A20891332002A4EF1 /* LaunchScreen.storyboard */,
 				8E94675D20891332002A4EF1 /* Info.plist */,
@@ -292,7 +304,7 @@
 				TargetAttributes = {
 					8E94674D20891332002A4EF1 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					8E94676120891332002A4EF1 = {
 						CreatedOnToolsVersion = 9.2;
@@ -475,6 +487,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-NailFinder2/Pods-NailFinder2-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -483,6 +496,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -517,15 +531,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E09BD1F209E68CF002950A5 /* SignUpChu2ViewController.swift in Sources */,
 				8ECE1E862093C264004754CD /* AdminViewController.swift in Sources */,
 				8E94675420891332002A4EF1 /* ViewController.swift in Sources */,
 				8E946786208945AF002A4EF1 /* DriverTableViewController.swift in Sources */,
 				8EDA5C64208B096900A4BE90 /* ChuMapViewController.swift in Sources */,
 				8E94675220891332002A4EF1 /* AppDelegate.swift in Sources */,
 				8E94678220892A28002A4EF1 /* ThoViewController.swift in Sources */,
+				8E4D0D062097AAC1009389DF /* ThoAvailable.swift in Sources */,
+				8E09BD1D209E5FE4002950A5 /* SignUpChu1ViewController.swift in Sources */,
 				8ECE1E8F209564C7004754CD /* CircleView.swift in Sources */,
 				8E946788208958AD002A4EF1 /* AcceptRequestViewController.swift in Sources */,
 				8E16284F20902E920003A6F7 /* chuTableViewController.swift in Sources */,
+				8E4D0D042096AFDE009389DF /* ChuProfileViewController.swift in Sources */,
 				8ECE1E882093DE5D004754CD /* ThoProfileViewController.swift in Sources */,
 				8EDA5C66208BBD0300A4BE90 /* LoginTextField.swift in Sources */,
 				8ED65FB42092DF2A00F3062C /* SignUpThoViewController.swift in Sources */,
@@ -634,7 +652,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -685,7 +703,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -698,11 +716,14 @@
 			baseConfigurationReference = 7FE00DBA4A40C041E79FB0CC /* Pods-NailFinder2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = NailFinder2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.snow-bro.NailFinder2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -713,11 +734,15 @@
 			baseConfigurationReference = EB6134298E02D12CC2C5AE50 /* Pods-NailFinder2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = BP2DWZYCW9;
 				INFOPLIST_FILE = NailFinder2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.snow-bro.NailFinder2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "14ed34b1-673e-40bd-a37f-e1cd1481cd2d";
+				PROVISIONING_PROFILE_SPECIFIER = NailFinderAppStore;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

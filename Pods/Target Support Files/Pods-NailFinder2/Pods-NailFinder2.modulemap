@@ -1,0 +1,6 @@
+framework module Pods_NailFinder2 {
+  umbrella header "Pods-NailFinder2-umbrella.h"
+
+  export *
+  module * { export * }
+}
